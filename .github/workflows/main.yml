@@ -1,0 +1,17 @@
+name: Deploy Worker
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build & Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: 1ASRvOQg34Oc8Q9QAfWg_y0cUEFVKbw5CSgPiWef
+          accountId: b14091c0a76f43261fa4b3f1b809bb60
